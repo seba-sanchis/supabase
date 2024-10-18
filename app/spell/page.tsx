@@ -1,5 +1,6 @@
-import { Table } from "@/components";
-import { getSpells } from "@/lib/actions/database.actions";
+import { cookies } from "next/headers";
+
+import { Choicebox, Table } from "@/components";
 
 const head = [
   "Name",
@@ -12,50 +13,77 @@ const head = [
   "Value",
 ];
 
-export default async function Page() {
+const tabs = [
+  "Todos",
+  "Asesino",
+  "Bandido",
+  "Bardo",
+  "Clérigo",
+  "Druida",
+  "Guerrero",
+  "Mago",
+  "Paladín",
+];
+
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export default async function Page({ params }: Props) {
   // const spells = await getSpells();
   const spells = [
     {
-      id: '2d533cc4-9db1-4a48-b9de-585c2f70d9d8',
-      name: 'Dardo Mágico',
-      invocation: 'OHL VOR PEK',
-      description: 'Causa 5 a 15 puntos de daño a la víctima.',
+      id: "2d533cc4-9db1-4a48-b9de-585c2f70d9d8",
+      name: "Dardo Mágico",
+      invocation: "OHL VOR PEK",
+      description: "Causa 5 a 15 puntos de daño a la víctima.",
       min_damage: 5,
       max_damage: 10,
       magic: 0,
       mana: 5,
       stamina: 5,
-      value: 50
+      value: 50,
     },
     {
-      id: 'e9ba0bd4-012b-41ab-bf26-04c9a29c3fe2',
-      name: 'Grito del Guerrero',
-      invocation: 'GRU',
-      description: 'Aumenta la velocidad del personaje.',
-      min_damage: null,
-      max_damage: null,
+      id: "e9ba0bd4-012b-41ab-bf26-04c9a29c3fe2",
+      name: "Grito del Guerrero",
+      invocation: "GRU",
+      description: "Aumenta la velocidad del personaje.",
+      min_damage: 1,
+      max_damage: 5,
       magic: 0,
       mana: 0,
       stamina: 440,
-      value: 1200000
+      value: 1200000,
     },
     {
-      id: '7ec37407-bfda-4d6e-8f16-accacab8d533',
-      name: 'Curar Veneno',
-      invocation: 'NIHIL VED',
-      description: 'Cura el estado de envenenamiento del personaje que selecciones.',
-      min_damage: null,
-      max_damage: null,
+      id: "7ec37407-bfda-4d6e-8f16-accacab8d533",
+      name: "Curar Veneno",
+      invocation: "NIHIL VED",
+      description:
+        "Cura el estado de envenenamiento del personaje que selecciones.",
+      min_damage: 1,
+      max_damage: 5,
       magic: 10,
       mana: 40,
       stamina: 35,
-      value: 1500
+      value: 1500,
     },
-  ]
+  ];
+
+  const cookieStore = cookies();
+
+  const { value: spell } = cookieStore.get("spell") || { value: "Todos" };
 
   return (
     <div className="flex flex-col items-center py-16">
+      <div className="flex flex-col gap-4 p-4 w-full max-w-screen-lg rounded-xl border border-[--border-1] bg-[--background-2]">
+      <Choicebox tabs={tabs} value={spell} />
+
       <Table head={head} value={spells} />
+      </div>
     </div>
   );
 }

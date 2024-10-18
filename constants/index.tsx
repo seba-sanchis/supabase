@@ -10,14 +10,20 @@ import {
 
 export const navigation = [
   {
-    menu: "Database",
+    menu: "Base de Datos",
     submenu: [
       {
-        name: "Classes",
+        name: "Clases",
         description:
           "Asesino, Bandido, Bardo, Clérigo, Druida, Guerrero, Mago y Paladín.",
         url: "/class",
         icon: <FaHatWizard />,
+      },
+      {
+        name: "Hechizos",
+        description: "Daño, Maná, Skills y Stamina.",
+        url: "/spell",
+        icon: <FaBolt />,
       },
       {
         name: "Items",
@@ -32,30 +38,24 @@ export const navigation = [
         url: "/npc",
       },
       {
-        name: "Races",
+        name: "Razas",
         description: "Humano, Elfo, Gnomo, Elfo Oscuro, Enano y Orco.",
         url: "/race",
         icon: <FaUser />,
       },
-      {
-        name: "Spells",
-        description: "Daño, Maná, Skills y Stamina.",
-        url: "/spell",
-        icon: <FaBolt />,
-      },
     ],
   },
   {
-    menu: "Tools",
+    menu: "Herramientas",
     submenu: [
       {
-        name: "Skills Calculator",
+        name: "Calculadora de Skills",
         description: "Puntos disponibles según nivel.",
         url: "/skills",
         icon: <FaCalculator />,
       },
       {
-        name: "Map",
+        name: "Mapa",
         description: "Ubicación de NPCs y Recursos.",
         url: "/map",
         icon: <FaMapMarkedAlt />,

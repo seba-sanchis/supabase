@@ -1,13 +1,11 @@
-import { UUID } from "crypto";
-
 export interface Search {
-  id: UUID;
+  id: string;
   name: string;
   type: string;
 }
 
 export interface Spell {
-  id: UUID;
+  id: string;
   name: string;
   invocation: string;
   description: string;
