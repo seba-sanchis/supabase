@@ -1,3 +1,22 @@
+export interface Class {
+  id: string;
+  name: string;
+  description: string;
+}
+
+interface ClassSpell {
+  class: Class;
+}
+
+export interface NPC {
+  id: string;
+  name: string;
+}
+
+interface NPCSpell {
+  npc: NPC;
+}
+
 export interface Search {
   id: string;
   name: string;
@@ -15,4 +34,7 @@ export interface Spell {
   mana: number;
   stamina: number;
   value: number;
+  class_spell: ClassSpell[];
+  npc_spell: NPCSpell[];
+  npc_names: string[];
 }

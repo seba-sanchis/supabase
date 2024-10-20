@@ -1,6 +1,6 @@
 "use client";
 
-import { setSpell } from "@/lib/actions/store.actions";
+import { setClass } from "@/lib/actions/store.actions";
 
 type Props = {
   tabs: string[];
@@ -9,7 +9,7 @@ type Props = {
 
 export default function Choicebox({ tabs, value }: Props) {
   async function handleClick(value: string) {
-    await setSpell(value);
+    await setClass(value);
   }
 
   return (
@@ -21,7 +21,7 @@ export default function Choicebox({ tabs, value }: Props) {
           className={`flex justify-center flex-1 text-sm rounded-lg transition duration-200 ${
             value === item.toLocaleLowerCase()
               ? "border-2 p-[7px] border-[--border-3] text-[--foreground-1]"
-              : "border p-2 border-[--border-1] text-[--foreground-2] hover:border-[--border-3]"
+              : "border p-2 border-[--border-1] text-[--foreground-2] hover:border-[--border-3] hover:bg-[--background-3]"
           }`}
         >
           {item}
