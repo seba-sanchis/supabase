@@ -38,3 +38,9 @@ export interface Spell {
   npc_spell: NPCSpell[];
   npc_names: string[];
 }
+
+export interface Zone {
+  id: string;
+  name: string;
+  position: number;
+}

@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 
+import { Spell } from "@/types";
 import { Choicebox, Table } from "@/components";
 import { getSpells } from "@/lib/actions/database.actions";
-import { Class, Spell } from "@/types";
 
 const head = ["Nombre", "Vendedor", "Skills", "Maná", "Stamina", "Valor"];
 
@@ -40,7 +40,7 @@ export default async function Page() {
 
   return (
     <div className="flex flex-col items-center py-16">
-      <div className="flex flex-col gap-4 p-4 w-full max-w-screen-lg rounded-xl border border-[--border-1] bg-[--background-2]">
+      <div className="flex flex-col gap-4 p-4 w-full max-w-screen-xl rounded-xl border border-[--border-1] bg-[--background-2]">
         <Choicebox tabs={tabs} value={selectedClass} />
 
         <Table head={head} value={filteredSpells} />

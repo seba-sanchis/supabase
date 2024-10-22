@@ -62,3 +62,20 @@ export async function getSpells() {
 
   return sortedData;
 }
+
+export async function getZones() {
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from("zone")
+    .select(
+      `
+      *
+    `
+    )
+    .order("position", { ascending: true });
+
+  if (error) throw error;
+
+  return data;
+}
