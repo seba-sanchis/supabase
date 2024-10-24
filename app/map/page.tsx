@@ -4,6 +4,7 @@ import { FaMapMarkedAlt } from "react-icons/fa";
 import { Zone } from "@/types";
 import { Map, Searchform } from "@/components";
 import { getZones } from "@/lib/actions/database.actions";
+import Link from "next/link";
 
 export default async function Page() {
   const zones: Zone[] = await getZones();
@@ -51,7 +52,7 @@ export default async function Page() {
                       key={item.npc.id}
                       className="flex justify-between text-sm"
                     >
-                      <span>{item.npc.name}</span>
+                      <Link href={`/npc/${item.npc.id}`} className="hover:underline">{item.npc.name}</Link>
                       <span>{item.quantity}</span>
                     </div>
                   ))}

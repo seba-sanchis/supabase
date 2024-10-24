@@ -21,7 +21,7 @@ export default function Searchform() {
         id="search"
         name="search"
         type="text"
-        placeholder="Search..."
+        placeholder="Buscar..."
         className="flex-1 bg-transparent outline-none"
       />
     </form>

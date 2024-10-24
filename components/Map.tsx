@@ -58,7 +58,9 @@ export default function Map({ zones, zone, search }: Props) {
                       ? "border-[--amber-1] bg-[--amber-3]"
                       : "border-[--amber-2] bg-[--amber-1] hover:border-[--amber-1] hover:bg-[--amber-3]"
                   }`
-                : item.name.includes("Bosque") || item.name.includes("Costa")
+                : item.name.includes("Bosque") ||
+                  item.name.includes("Costa") ||
+                  item.name.includes("Suburbio")
                 ? `${
                     item.id === zone.id
                       ? "border-[--lime-1] bg-[--lime-3]"

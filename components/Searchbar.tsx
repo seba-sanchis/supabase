@@ -51,7 +51,7 @@ export default function Searchbar() {
         <input
           type="text"
           value={query}
-          placeholder="Search..."
+          placeholder="Buscar..."
           onChange={handleChange}
           className="peer flex-1 bg-transparent outline-none"
         />
