@@ -17,6 +17,11 @@ interface NPCSpell {
   npc: NPC;
 }
 
+interface NPCZone {
+  npc: NPC;
+  quantity: number;
+}
+
 export interface Search {
   id: string;
   name: string;
@@ -43,4 +48,5 @@ export interface Zone {
   id: string;
   name: string;
   position: number;
+  npc_zone: NPCZone[];
 }

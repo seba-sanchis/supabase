@@ -1,7 +1,7 @@
 "use server";
 
-import { Spell } from "@/types";
 import { createClient } from "../supabase/server";
+import { Spell } from "@/types";
 
 export async function getSearch(query: string) {
   const supabase = createClient();
@@ -70,7 +70,14 @@ export async function getZones() {
     .from("zone")
     .select(
       `
-      *
+      *,
+      npc_zone (
+        quantity,
+        npc (
+          id,
+          name
+        )
+      )
     `
     )
     .order("position", { ascending: true });

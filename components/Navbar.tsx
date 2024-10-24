@@ -7,7 +7,7 @@ import { navigation } from "@/constants";
 export default function Navbar() {
   return (
     <nav className="sticky top-0 z-10 flex items-center justify-center px-4 border-b border-[--border-1] backdrop-blur-sm bg-[rgba(18,18,18,0.95)]">
-      <div className="flex items-center gap-8 max-w-screen-xl w-full">
+      <div className="flex items-center gap-8 max-w-screen-lg w-full">
         <Link href="/">
           <Image
             src="/assets/images/logo.png"
