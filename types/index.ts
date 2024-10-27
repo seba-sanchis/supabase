@@ -11,6 +11,9 @@ interface ClassSpell {
 export interface NPC {
   id: string;
   name: string;
+  experience: number;
+  health: number;
+  npc_zone: NPCZone[];
 }
 
 interface NPCSpell {
@@ -19,6 +22,7 @@ interface NPCSpell {
 
 interface NPCZone {
   npc: NPC;
+  zone: Zone;
   quantity: number;
 }
 
@@ -31,16 +35,16 @@ export interface Search {
 interface SkillItem {
   name: string;
   value: number;
-};
+}
 
 interface SkillCategory {
   category: SkillItem[];
-};
+}
 
 export interface Skill {
   title: string;
   group: SkillCategory[];
-};
+}
 
 export interface Spell {
   id: string;

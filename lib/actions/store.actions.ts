@@ -27,31 +27,6 @@ export async function setSkills() {
   cookieStore.set("skill", stringifiedValue);
 }
 
-export async function setSkill(skillName: string, formData: FormData) {
-  const { value } = cookies().get("skill") || { value: "[]" };
-
-  const currentSkills: Skill[] = JSON.parse(value);
-
-  const data = {
-    skill: formData.get("skill") as string,
-  };
-
-  // Update the skills by navigating through the nested structure
-  const updatedSkills = currentSkills.map((category) => ({
-    ...category,
-    group: category.group.map((group) => ({
-      ...group,
-      category: group.category.map((skill) =>
-        skill.name === skillName
-          ? { ...skill, value: Math.max(0, parseInt(data.skill)) }
-          : skill
-      ),
-    })),
-  }));
-  console.log(updatedSkills);
-  cookies().set("skill", JSON.stringify(updatedSkills));
-}
-
 // Decrease the skill value and update it in the cookie
 export async function setSkillDown(skillName: string) {
   const { value } = cookies().get("skill") || { value: "[]" };

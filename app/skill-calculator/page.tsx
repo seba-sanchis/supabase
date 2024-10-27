@@ -12,7 +12,7 @@ export default async function Page() {
 
   const { value: level } = cookieStore.get("level") || { value: "" };
 
-  const skill: Skill[] = JSON.parse(value);
+  const skills: Skill[] = JSON.parse(value);
 
   // Parse the level and ensure it's a number
   const parsedLevel = parseInt(level, 10) || 1;
@@ -21,7 +21,7 @@ export default async function Page() {
   const earnedPoints = 10 + (parsedLevel - 1) * 5;
 
   // Calculate the total of currently allocated points across all skills
-  const allocatedPoints = skill.reduce(
+  const allocatedPoints = skills.reduce(
     (acc, category) =>
       acc +
       category.group.reduce(
@@ -36,7 +36,7 @@ export default async function Page() {
   const availablePoints = earnedPoints - allocatedPoints;
 
   // Check if the user level is at least 25 and has at least 70 points for navigation:
-  const hasRequiredNavigationSkill = skill.some((category) =>
+  const hasRequiredNavigationSkill = skills.some((category) =>
     category.group.some((group) =>
       group.category.some(
         (skill) =>
@@ -48,7 +48,7 @@ export default async function Page() {
   const canNavigate = parsedLevel >= 25 && hasRequiredNavigationSkill;
 
   // Check if the user level is at least 25 and has at least 70 points for navigation:
-  const hasRequiredLeadershipSkill = skill.some((category) =>
+  const hasRequiredLeadershipSkill = skills.some((category) =>
     category.group.some((group) =>
       group.category.some(
         (skill) => skill.name.toLowerCase() === "liderazgo" && skill.value >= 35
@@ -129,7 +129,7 @@ export default async function Page() {
           </div>
         </div>
         <SkillCalculator
-          skill={skill}
+          skills={skills}
           availablePoints={availablePoints}
           naturalPoints={naturalPoints}
         />

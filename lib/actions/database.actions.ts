@@ -63,6 +63,25 @@ export async function getSpells() {
   return sortedData;
 }
 
+export async function getNPCs() {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.from("npc").select(`
+      *,
+      npc_zone (
+        quantity,
+        zone (
+          id,
+          name
+        )
+      )
+    `);
+
+  if (error) throw error;
+
+  return data;
+}
+
 export async function getZones() {
   const supabase = createClient();
 

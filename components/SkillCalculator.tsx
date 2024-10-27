@@ -6,22 +6,19 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { Skill } from "@/types";
 import { Input } from "@/components";
 import {
-  setSkill,
   setSkillDown,
   setSkills,
   setSkillUp,
 } from "@/lib/actions/store.actions";
 
-
-
 type Props = {
-  skill: Skill[];
+  skills: Skill[];
   availablePoints: number;
   naturalPoints: number;
 };
 
 export default function SkillCalculator({
-  skill,
+  skills,
   availablePoints,
   naturalPoints,
 }: Props) {
@@ -30,7 +27,7 @@ export default function SkillCalculator({
 
   useEffect(() => {
     async function addSkills() {
-      if (skill.length <= 0) {
+      if (skills.length <= 0) {
         await setSkills();
       }
     }
@@ -46,29 +43,10 @@ export default function SkillCalculator({
       : (skillValue + naturalPoints).toString();
   }
 
-  // async function handleChange(
-  //   skillName: string,
-  //   e: React.ChangeEvent<HTMLInputElement>
-  // ) {
-  //   const newValue = e.target.value;
-  //   // Clear the previous timeout if the user types within the 4 seconds
-  //   if (debounce) {
-  //     clearTimeout(debounce);
-  //   }
-  //   // Set a new timeout to trigger the search after 4 seconds
-  //   const newTimeout = setTimeout(async () => {
-  //     if (newValue.trim()) {
-  //       await setSkill(skillName, newValue);
-  //     }
-  //   }, 400);
-  //   // Save the timeout so we can clear it if needed
-  //   setDebounce(newTimeout);
-  // }
-
   return (
     <div className="flex flex-col gap-2 py-20 w-full max-w-screen-lg">
       <div className="grid grid-cols-2 gap-12 w-full">
-        {skill.map((skill) => (
+        {skills.map((skill) => (
           <div
             key={skill.title.toLowerCase()}
             className="flex flex-col items-center gap-4"
