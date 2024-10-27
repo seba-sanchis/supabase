@@ -1,12 +1,14 @@
-import { Spell } from "@/types";
 import Link from "next/link";
 
+import { Spell } from "@/types";
+
 type Props = {
-  head: string[];
   value: Spell[];
 };
 
-export default function Table({ head, value }: Props) {
+export default function SpellTable({ value }: Props) {
+  const head = ["Nombre", "Vendedor", "Skills", "Maná", "Stamina", "Valor"];
+
   return (
     <table className="table table-auto w-full overflow-hidden rounded-b text-xs">
       <thead>
@@ -35,7 +37,7 @@ export default function Table({ head, value }: Props) {
               <div className="text-[--foreground-2]">{item.description}</div>
             </td>
             <td className="p-3 text-left">
-              {item.npc_names?.map((name, index) => (
+              {item.npc_name?.map((name, index) => (
                 <span key={index}>
                   <Link
                     href={`/npc/${name.toLocaleLowerCase()}`}
@@ -43,7 +45,7 @@ export default function Table({ head, value }: Props) {
                   >
                     {name}
                   </Link>
-                  {index < item.npc_names.length - 1 && ", "}
+                  {index < item.npc_name.length - 1 && ", "}
                 </span>
               ))}
             </td>

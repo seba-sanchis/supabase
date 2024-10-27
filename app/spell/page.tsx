@@ -1,10 +1,8 @@
 import { cookies } from "next/headers";
 
 import { Spell } from "@/types";
-import { Choicebox, Table } from "@/components";
+import { Choicebox, SpellTable } from "@/components";
 import { getSpells } from "@/lib/actions/database.actions";
-
-const head = ["Nombre", "Vendedor", "Skills", "Maná", "Stamina", "Valor"];
 
 const tabs = [
   "Todos",
@@ -43,7 +41,7 @@ export default async function Page() {
       <div className="flex flex-col gap-4 p-4 w-full max-w-screen-lg rounded-xl border border-[--border-1] bg-[--background-2]">
         <Choicebox tabs={tabs} value={selectedClass} />
 
-        <Table head={head} value={filteredSpells} />
+        <SpellTable value={filteredSpells} />
       </div>
     </div>
   );

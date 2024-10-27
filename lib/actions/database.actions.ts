@@ -56,7 +56,7 @@ export async function getSpells() {
 
     return {
       ...spell,
-      npc_names: uniqueNpcNames,
+      npc_name: uniqueNpcNames,
     };
   });
 
@@ -66,7 +66,10 @@ export async function getSpells() {
 export async function getNPCs() {
   const supabase = createClient();
 
-  const { data, error } = await supabase.from("npc").select(`
+  const { data, error } = await supabase
+    .from("npc")
+    .select(
+      `
       *,
       npc_zone (
         quantity,
@@ -74,8 +77,16 @@ export async function getNPCs() {
           id,
           name
         )
+      ),
+      item_npc (
+        item (
+          id,
+          name
+        )
       )
-    `);
+    `
+    )
+    .order("health", { ascending: true });
 
   if (error) throw error;
 

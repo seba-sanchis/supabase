@@ -8,11 +8,26 @@ interface ClassSpell {
   class: Class;
 }
 
+interface Item {
+  id: string;
+  name: string;
+}
+
+interface ItemNPC {
+  item: Item;
+  npc: NPC;
+}
+
 export interface NPC {
   id: string;
   name: string;
-  experience: number;
+  min_damage: number;
+  max_damage: number;
   health: number;
+  experience: number;
+  gold: number;
+  clan_experience: number;
+  item_npc: ItemNPC[];
   npc_zone: NPCZone[];
 }
 
@@ -59,7 +74,7 @@ export interface Spell {
   value: number;
   class_spell: ClassSpell[];
   npc_spell: NPCSpell[];
-  npc_names: string[];
+  npc_name: string[];
 }
 
 export interface Zone {
