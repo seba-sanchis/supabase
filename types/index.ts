@@ -28,6 +28,20 @@ export interface Search {
   type: string;
 }
 
+interface SkillItem {
+  name: string;
+  value: number;
+};
+
+interface SkillCategory {
+  category: SkillItem[];
+};
+
+export interface Skill {
+  title: string;
+  group: SkillCategory[];
+};
+
 export interface Spell {
   id: string;
   name: string;

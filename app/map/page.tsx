@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { cookies } from "next/headers";
-import { FaMapMarkedAlt } from "react-icons/fa";
+import { FaMapMarkedAlt, FaSearch } from "react-icons/fa";
 
 import { Zone } from "@/types";
-import { Map, Searchform } from "@/components";
+import { Input, Map } from "@/components";
+import { setSearch } from "@/lib/actions/store.actions";
 import { getZones } from "@/lib/actions/database.actions";
-import Link from "next/link";
 
 export default async function Page() {
   const zones: Zone[] = await getZones();
@@ -39,7 +40,14 @@ export default async function Page() {
                 </div>
               </div>
 
-              <Searchform />
+              <Input
+                name="search"
+                placeholder="Buscar..."
+                preffix={
+                  <FaSearch size={16} className="text-[--foreground-2]" />
+                }
+                preffixAction={setSearch}
+              />
             </div>
             {Object.keys(zone).length > 0 && (
               <div className="flex flex-col gap-4 p-8 w-full max-w-96 h-64 -mb-40 rounded-lg border border-[--border-1] bg-[--background-1] overflow-scroll">
@@ -52,7 +60,12 @@ export default async function Page() {
                       key={item.npc.id}
                       className="flex justify-between text-sm"
                     >
-                      <Link href={`/npc/${item.npc.id}`} className="hover:underline">{item.npc.name}</Link>
+                      <Link
+                        href={`/npc/${item.npc.id}`}
+                        className="hover:underline"
+                      >
+                        {item.npc.name}
+                      </Link>
                       <span>{item.quantity}</span>
                     </div>
                   ))}

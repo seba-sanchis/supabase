@@ -26,6 +26,7 @@ export default function Map({ zones, zone, search }: Props) {
           item?.npc_zone?.some((npcZone) =>
             npcZone.npc.name.toLowerCase().includes(searchLower)
           );
+
         return (
           <button
             key={item.id}
